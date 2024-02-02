@@ -13,6 +13,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   margin: 0;
 }
 
@@ -40,12 +41,12 @@ body {
 
 .gradient-circle {
   background: conic-gradient(
-    #55b7a4 0%,
-    #4ca493 40%,
-    #fff 40%,
-    #fff 60%,
-    #336d62 60%,
-    #2a5b52 100%
+    #55b7a4 0%, /* Start with inhale color */
+    #4ca493 21.05%, /* Inhale to Hold transition */
+    #fff 21.05%, /* Start of Hold */
+    #fff 57.89%, /* Hold to Exhale transition */
+    #336d62 57.89%, /* Start of Exhale */
+    #2a5b52 100% /* Complete cycle */
   );
   height: 320px;
   width: 320px;
@@ -70,7 +71,7 @@ body {
   left: 140px;
   width: 20px;
   height: 190px;
-  animation: rotate 7.5s linear forwards infinite;
+  animation: rotate 19s linear infinite; /* Adjusted to match the total cycle time */
   transform-origin: bottom center;
 }
 
@@ -78,35 +79,32 @@ body {
   from {
     transform: rotate(0deg);
   }
-
   to {
     transform: rotate(360deg);
   }
 }
 
 .container.grow {
-  animation: grow 3s linear forwards;
+  animation: grow 4s ease-in forwards; /* Adjusted to 4 seconds for inhale */
 }
 
 @keyframes grow {
   from {
     transform: scale(1);
   }
-
   to {
     transform: scale(1.2);
   }
 }
 
 .container.shrink {
-  animation: shrink 3s linear forwards;
+  animation: shrink 8s ease-out forwards; /* Adjusted to 8 seconds for exhale */
 }
 
 @keyframes shrink {
   from {
     transform: scale(1.2);
   }
-
   to {
     transform: scale(1);
   }
